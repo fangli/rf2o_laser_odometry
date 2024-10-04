@@ -19,7 +19,9 @@ def generate_launch_description():
             Node(
                 package='rf2o_laser_odometry',
                 executable='rf2o_laser_odometry_node',
-                name='rf2o_laser_odometry',
+                # We should NOT override the name here. because the odometry will run two nodes /CLaserOdometry2D /CLaserOdometry2DNode
+                # With following option, both nodes will be mapped to the same name, creating unexpected behavior.
+                #name='rf2o_laser_odometry',
                 output='screen',
                 parameters=[{
                     'laser_scan_topic' : '/scan',
